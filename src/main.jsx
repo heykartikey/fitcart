@@ -12,6 +12,7 @@ import Contact from './routes/contact';
 import Product from './routes/Product';
 import Login from './routes/Login';
 import Register from './routes/Register';
+import Upload from './routes/Upload';
 
 const router = createBrowserRouter([
   {
@@ -20,7 +21,7 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />
   },
   {
-    path: "products/:productId",
+    path: "product/:productId",
     element: <Product />
   },
   {
@@ -30,7 +31,11 @@ const router = createBrowserRouter([
   {
     path: "/register",
     element: <Register />
-  }
+  },
+  {
+    path: "/upload",
+    element: <Upload />
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(

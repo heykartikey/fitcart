@@ -1,7 +1,8 @@
 import { useRef, useState } from "react";
 import "./navbar.css";
+import { Link } from "react-router-dom";
 
-const Navbar = ({ setProducts }) => {
+const Navbar = ({ setProducts = null }) => {
   const [query, setQuery] = useState("")
 
   const aborter = useRef(null)
@@ -27,11 +28,17 @@ const Navbar = ({ setProducts }) => {
           height="30px"
           width="30px"
         />
-        <h3>Fitcart</h3>
+        <Link to="/">
+          <h3>Fitcart</h3>
+        </Link>
       </div>
       <div class="contentRightItems">
-        <input type="text" placeholder="Search Items" value={query} onChange={(e) => setQuery(e.target.value)} />
-        <button onClick={search}>Search</button>
+        {setProducts &&
+          <>
+            <input type="text" placeholder="Search Items" value={query} onChange={(e) => setQuery(e.target.value)} />
+            <button onClick={search}>Search</button>
+          </>
+        }
         <button>Logout</button>
       </div>
     </div>
