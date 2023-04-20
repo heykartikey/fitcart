@@ -2,6 +2,7 @@ import "./root.css"
 
 import ProductItem from "../components/ProductItem";
 import { useEffect, useState } from "react";
+import Navbar from "../components/Navbar";
 
 const RECORDS_PER_PAGE = 10;
 
@@ -51,23 +52,26 @@ const Root = () => {
   }, [page])
 
   return <div>
-    {products.length > 0 ?
-      <div className="products">
-        {products.map(product =>
-          <ProductItem id={product.productId} name={product.productName} price={product.productPrice} image={product.displayImagePath} />
-        )
-        }
+    <Navbar />
+    <main>
+      {products.length > 0 ?
+        <div className="products">
+          {products.map(product =>
+            <ProductItem id={product.productId} name={product.productName} price={product.productPrice} image={product.displayImagePath} />
+          )
+          }
+        </div>
+        : <div className="empty">No Item</div>
+      }
+      <div className="page-step">
+        {page > 1 && <button onClick={() => setPage(page => page - 1)}>Previous</button>}
+        <button onClick={() => {
+          if (data.length > 0) {
+            setPage(page => page + 1)
+          }
+        }}>Next</button>
       </div>
-      : <div className="empty">No Item</div>
-    }
-    <div className="page-step">
-      {page > 1 && <button onClick={() => setPage(page => page - 1)}>Previous</button>}
-      <button onClick={() => {
-        if (data.length > 0) {
-          setPage(page => page + 1)
-        }
-      }}>Next</button>
-    </div>
+    </main>
   </div>
 }
 
