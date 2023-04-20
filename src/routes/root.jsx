@@ -44,7 +44,7 @@ const Root = () => {
 
     fetch(`https://localhost:7095/api/Furniture/getRecords?PageNumber=${page}&PageSize=${RECORDS_PER_PAGE}`, {
       signal: aborter.signal
-    }).then(setProducts)
+    }).then(r => r.json()).then(setProducts)
 
     return () => {
       aborter.abort()
