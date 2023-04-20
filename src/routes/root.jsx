@@ -62,7 +62,11 @@ const Root = () => {
     }
     <div className="page-step">
       {page > 1 && <button onClick={() => setPage(page => page - 1)}>Previous</button>}
-      <button onClick={() => setPage(page => page + 1)}>Next</button>
+      <button onClick={() => {
+        if (data.length > 0) {
+          setPage(page => page + 1)
+        }
+      }}>Next</button>
     </div>
   </div>
 }
