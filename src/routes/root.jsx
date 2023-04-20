@@ -52,7 +52,7 @@ const Root = () => {
   }, [page])
 
   return <div>
-    <Navbar />
+    <Navbar setProducts={setProducts} />
     <main>
       {products.length > 0 ?
         <div className="products">
@@ -64,7 +64,9 @@ const Root = () => {
         : <div className="empty">No Item</div>
       }
       <div className="page-step">
-        {page > 1 && <button onClick={() => setPage(page => page - 1)}>Previous</button>}
+        <button style={{
+          visibility: page > 1 ? "visible" : "hidden"
+        }} onClick={() => setPage(page => page - 1)}>Previous</button>
         <button onClick={() => {
           if (data.length > 0) {
             setPage(page => page + 1)

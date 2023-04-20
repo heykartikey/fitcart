@@ -31,10 +31,6 @@ p {
   border-radius: 4px;
 }
 
-a:hover {
-  font-size: 20px;
-}
-
 .boxShadowStyleContainer {
   display: flex;
   justify-content: space-around;
